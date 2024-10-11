@@ -20,4 +20,7 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	public Post(long id) {
+		this.id = id;
+	}
 }
