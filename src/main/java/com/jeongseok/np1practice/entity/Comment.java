@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Builder
 public class Comment {
 
 	@Id
@@ -20,7 +19,8 @@ public class Comment {
 
 	private String content;
 
-	private Comment(long id, String content) {
+	@Builder
+	public Comment(long id, String content) {
 		this.id = id;
 		this.content = content;
 	}
