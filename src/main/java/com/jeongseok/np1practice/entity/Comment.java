@@ -1,5 +1,6 @@
 package com.jeongseok.np1practice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "content")
+@Table(name = "comment")
 public class Comment {
 
 	@Id
@@ -27,6 +28,7 @@ public class Comment {
 	@Column(name = "content")
 	private String content;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "post_id")
 	private Post post;
