@@ -4,6 +4,7 @@ import com.jeongseok.np1practice.dto.PostDto;
 import com.jeongseok.np1practice.entity.Post;
 import com.jeongseok.np1practice.service.PostService;
 import java.util.List;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,11 @@ public class PostController {
 	@GetMapping("/test")
 	public List<Post> test() {
 		return postService.getPosts();
+	}
+
+	@GetMapping("/fetch-join")
+	public List<PostDto> getPostWithFetchJoin() {
+		return postService.getPostWithFetchJoin();
 	}
 
 }

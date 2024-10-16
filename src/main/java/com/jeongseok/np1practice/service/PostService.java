@@ -1,5 +1,6 @@
 package com.jeongseok.np1practice.service;
 
+import com.jeongseok.np1practice.controller.PostController;
 import com.jeongseok.np1practice.dto.CommentDto;
 import com.jeongseok.np1practice.dto.PostDto;
 import com.jeongseok.np1practice.entity.Comment;
@@ -39,5 +40,17 @@ public class PostService {
 
 	public List<Post> getPosts() {
 		return postRepository.findAll();
+	}
+
+	public List<PostDto> getPostWithFetchJoin() {
+		return postRepository.findAllPostAndComment()
+			.stream()
+			.map(post -> PostDto.of(post,
+				post.getComments()
+					.stream()
+					.map(comment -> CommentDto.of(comment, post.getPostId()))
+					.toList())
+			)
+			.toList();
 	}
 }
