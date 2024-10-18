@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-//	@Query("select p from Post p join fetch p.postId")
-//	List<Post> findAllPostAndComment();
-
 	@Query("select p from Post p join fetch p.comments")
 	List<Post> findAllPostAndComment();
 }
